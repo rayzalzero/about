@@ -6,7 +6,7 @@
     "email": "rayzalzero@gmail.com",
     "phone": "089670003660",
     "website": "http://rayzalzero.github.io",
-    "summary": "Richard hails from Tulsa. He has earned degrees from the University of Oklahoma and Stanford. (Go Sooners and Cardinal!) Before starting Pied Piper, he worked for Hooli as a part time software developer. While his work focuses on applied information theory, mostly optimizing lossless compression schema of both the length-limited and adaptive variants, his non-work interests range widely, everything from quantum computing to chaos theory. He could tell you about it, but THAT would NOT be a “length-limited” conversation!",
+    "summary": "Naufal Riza Fatahillah from Jember. He has earned degrees from the STMIK Akakom of Yogyakarta. Before starting Pied Piper, he worked for PT Gamatechno as a part time software developer and . While his work focuses on backend engine. so i like learn about machine learning or artificial intelligence.",
     "location": {
       "address": "Jl. Kusuma 401",
       "postalCode": "55225",
@@ -44,7 +44,7 @@
       "website": "https://www.gamatechno.com/",
       "startDate": "2017-09-25",
       "endDate": "2018-09-25",
-      "summary": "Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has consistently fielded high Weisman Scores™ that are not merely competitive, but approach the theoretical limit of lossless compression.",
+      "summary": "",
       "highlights": [
         "Mastering in Point Of Sale application ."
       ]
@@ -55,8 +55,10 @@
       "website": "https://www.jogjahost.co.id/",
       "startDate": "2016-08-01",
       "endDate": "2016-11-30",
-      "summary": "dsadsad",
-      "highlights": []
+      "summary": "",
+      "highlights": [
+        "Templating Aplication"
+      ]
     }
   ],
   "volunteer": [],
@@ -85,13 +87,28 @@
   ],
   "skills": [
     {
-      "name": "PHP",
-      "level": "Middle",
+      "name": "PHP ",
+      "level": "Intermediate",
       "keywords": []
     },
     {
       "name": "JavaScript",
-      "level": "Master",
+      "level": "Intermediate",
+      "keywords": []
+    },
+    {
+      "name": "Database SQL",
+      "level": "Intermediate",
+      "keywords": []
+    },
+    {
+      "name": "Python",
+      "level": "Beginner",
+      "keywords": []
+    },
+    {
+      "name": "Database No Sql",
+      "level": "Beginner",
       "keywords": []
     }
   ],
@@ -102,7 +119,7 @@
     },
     {
       "language": "Indonesia",
-      "fluency": "Write, Read and Speak"
+      "fluency": "Master"
     }
   ],
   "interests": [],
