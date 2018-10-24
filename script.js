@@ -116,7 +116,7 @@ function startWebRTC(isOfferer) {
         if (client.id === drone.clientId) {
             return;
         }
-
+console.log(message);
         if (message.sdp) {
             // This is called after receiving an offer or answer from another peer
             pc.setRemoteDescription(new RTCSessionDescription(message.sdp), () => {
