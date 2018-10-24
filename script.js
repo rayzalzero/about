@@ -46,7 +46,7 @@ drone.on('open', error => {
             var video = document.createElement('video');
 
             video.autoplay = true;
-            video.setAttribute('id', 'remoteVideo'+1);
+            video.setAttribute('id', 'remoteVideo'+(i+1));
             document.body.appendChild(video);
         }
         startWebRTC(isOfferer);
@@ -84,11 +84,11 @@ function startWebRTC(isOfferer) {
         const stream = event.streams[0];
         let Member = event.streams.length - 1;
         // let video = document.createElement('video');
-        console.log(Member);
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < Member; i++) {
             console.log(i);
             // video.srcObject = event.streams[i];
-            remoteVideo1.srcObject = event.streams[0];
+            var elementName = 'remoteVideo'+(i-1);
+            elementName.srcObject = event.streams[0];
         }
         if (!remoteVideo.srcObject || remoteVideo.srcObject.id !== stream.id) {
             remoteVideo.srcObject = stream;
