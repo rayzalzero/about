@@ -47,6 +47,7 @@ drone.on('open', error => {
 
             video.autoplay = true;
             video.setAttribute('id', 'remoteVideo'+(i+1));
+            video.setAttribute('class', 'col-md-4');
             document.body.appendChild(video);
         }
         startWebRTC(isOfferer);
