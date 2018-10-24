@@ -39,6 +39,16 @@ drone.on('open', error => {
         console.log('MEMBERS', members);
         // If we are the second user to connect to the room we will be creating the offer
         const isOfferer = members.length >= 2;
+        // setAttribute
+        // let x = document.createElement('video');
+        // console.log(Member);
+        for (let i = 0; i < members.length; i++) {
+            var video = document.createElement('video');
+
+            video.autoplay = true;
+            video.setAttribute('id', 'remoteVideo'+1);
+            document.body.appendChild(video);
+        }
         startWebRTC(isOfferer);
     });
 });
@@ -68,19 +78,27 @@ function startWebRTC(isOfferer) {
             pc.createOffer().then(localDescCreated).catch(onError);
         }
     }
-
+    // console.log(event.streams)
     // When a remote stream arrives display it in the #remoteVideo element
     pc.ontrack = event => {
         const stream = event.streams[0];
+        let Member = event.streams.length - 1;
+        // let video = document.createElement('video');
+        console.log(Member);
+        for (let i = 0; i < 30; i++) {
+            console.log(i);
+            // video.srcObject = event.streams[i];
+            remoteVideo1.srcObject = event.streams[0];
+        }
         if (!remoteVideo.srcObject || remoteVideo.srcObject.id !== stream.id) {
             remoteVideo.srcObject = stream;
         }else{
-            remoteVideo1.srcObject = stream;
+            // remoteVideo1.srcObject = stream;
         }
     };
 
     navigator.mediaDevices.getUserMedia({
-        audio: false,
+        audio: true,
         video: true,
     }).then(stream => {
         // Display your local video in #localVideo element
