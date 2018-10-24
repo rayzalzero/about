@@ -89,13 +89,13 @@ function startWebRTC(isOfferer) {
             console.log(i);
             // video.srcObject = event.streams[i];
             var elementName = 'remoteVideo'+(i-1);
-            elementName.srcObject = event.streams[0];
+            elementName.srcObject = event.streams[i];
         }
-        if (!remoteVideo.srcObject || remoteVideo.srcObject.id !== stream.id) {
-            remoteVideo.srcObject = stream;
-        }else{
-            // remoteVideo1.srcObject = stream;
-        }
+        // if (!remoteVideo.srcObject || remoteVideo.srcObject.id !== stream.id) {
+        //     remoteVideo.srcObject = stream;
+        // }else{
+        //     // remoteVideo1.srcObject = stream;
+        // }
     };
 
     navigator.mediaDevices.getUserMedia({
