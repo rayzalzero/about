@@ -87,6 +87,7 @@ function startWebRTC(isOfferer) {
         for (let i = 0; i < Member; i++) {
             console.log(i);
             const stream = event.streams[i];
+            console.log(stream);
             // video.srcObject = event.streams[i];
             var elementName = 'remoteVideo'+(i-1);
             elementName.srcObject = stream;
