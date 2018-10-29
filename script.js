@@ -1,6 +1,7 @@
 // Generate random room name if needed
 if (!location.hash) {
-    location.hash = Math.floor(Math.random() * 0xFFFFFF).toString(16);
+    // location.hash = Math.floor(Math.random() * 0xFFFFFF).toString(16);
+    location.hash = 'MTK';
 }
 const roomHash = location.hash.substring(1);
 
@@ -15,7 +16,7 @@ const configuration = {
 };
 let room;
 let pc;
-
+let stream;
 
 function onSuccess() {};
 function onError(error) {
@@ -37,7 +38,7 @@ drone.on('open', error => {
     room.on('members', members => {
         console.log('MEMBERS', members);
         // If we are the second user to connect to the room we will be creating the offer
-        const isOfferer = members.length === 2;
+        const isOfferer = members.length === 3;
         startWebRTC(isOfferer);
     });
 });
@@ -70,24 +71,24 @@ function startWebRTC(isOfferer) {
 
     // When a remote stream arrives display it in the #remoteVideo element
     pc.ontrack = event => {
-        const stream = event.streams[0];
-        if (!remoteVideo.srcObject || remoteVideo.srcObject.id !== stream.id) {
-            remoteVideo.srcObject = stream;
-        }
+        console.log(event);
+        remoteVideo.srcObject = event.stream;
     };
 
     navigator.mediaDevices.getUserMedia({
-        audio: true,
+        audio: false,
         video: true,
-    }).then(stream => {
+    }).then(s => {
+        stream = s
         // Display your local video in #localVideo element
         localVideo.srcObject = stream;
         // Add your stream to be sent to the conneting peer
-        stream.getTracks().forEach(track => pc.addTrack(track, stream));
+        pc.addStream(stream);
     }, onError);
 
     // Listen to signaling data from Scaledrone
     room.on('data', (message, client) => {
+        // console.log(message, client);
         // Message was sent by us
         if (client.id === drone.clientId) {
             return;
@@ -117,3 +118,33 @@ function localDescCreated(desc) {
         onError
     );
 }
+
+btnGetAudioTracks.addEventListener("click", function(){
+    console.log("getAudioTracks");
+    console.log(stream.getAudioTracks());
+});
+
+btnGetTrackById.addEventListener("click", function(){
+    console.log("getTrackById");
+    console.log(stream.getTrackById(stream.getAudioTracks()[0].id));
+});
+
+btnGetTracks.addEventListener("click", function(){
+    console.log("getTracks()");
+    console.log(stream.getTracks());
+});
+
+btnGetVideoTracks.addEventListener("click", function(){
+    console.log("getVideoTracks()");
+    console.log(stream.getVideoTracks());
+});
+
+btnRemoveAudioTrack.addEventListener("click", function(){
+    console.log("removeAudioTrack()");
+    stream.removeTrack(stream.getAudioTracks()[0]);
+});
+
+btnRemoveVideoTrack.addEventListener("click", function(){
+    console.log("removeVideoTrack()");
+    stream.removeTrack(stream.getVideoTracks()[0]);
+});
